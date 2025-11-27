@@ -1,28 +1,14 @@
+// src/app.js
+require('dotenv').config();
 const express = require('express');
 const app = express();
-
-console.log("🔥 Iniciando servidor...");
+const routes = require('./routes');
 
 app.use(express.json());
+app.use('/', routes);
 
-app.post('/deploy', (req, res) => {
-  console.log('🔥 LLEGÓ A POST /deploy');
-  res.send('OK desde /deploy');
-});
-
-const PORT = 4000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`✅ API mínima escuchando en ${PORT}`);
-});
-
-// ----------- CAPTURAR ERRORES REALES ------------
-process.on('uncaughtException', (err) => {
-  console.error('💥 uncaughtException:', err);
-});
-process.on('unhandledRejection', (reason) => {
-  console.error('💥 unhandledRejection:', reason);
-});
-process.on('exit', (code) => {
-  console.log("⚡ process.exit ejecutado con código:", code);
+  console.log(`🚀 Deploy API running on port ${PORT}`);
 });
