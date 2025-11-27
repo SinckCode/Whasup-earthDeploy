@@ -1,19 +1,24 @@
 // src/app.js
-require('dotenv').config();
 const express = require('express');
-const { deploy } = require('./controllers/mainController');
-
 const app = express();
+
 app.use(express.json());
 
-// Ruta única: POST /deploy
 app.post('/deploy', (req, res) => {
-  console.log('🔥 Entró a POST /deploy');
-  deploy(req, res);
+  console.log('🔥 LLEGÓ A POST /deploy');
+  res.send('OK desde /deploy');
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Deploy API running on port ${PORT}`);
+  console.log(`✅ API mínima escuchando en ${PORT}`);
+});
+
+// Para ver errores que maten el proceso:
+process.on('uncaughtException', (err) => {
+  console.error('💥 Uncaught Exception:', err);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('💥 Unhandled Rejection:', reason);
 });
