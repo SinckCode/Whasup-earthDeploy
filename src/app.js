@@ -1,7 +1,7 @@
 // src/app.js
 require('dotenv').config();
 const express = require('express');
-const { deploy } = require('./controllers/mainController'); // 👈 importar controller directo
+const { deploy } = require('./controllers/mainController');
 
 const app = express();
 app.use(express.json());
