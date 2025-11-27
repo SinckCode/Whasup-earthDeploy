@@ -1,6 +1,7 @@
-// src/app.js
 const express = require('express');
 const app = express();
+
+console.log("🔥 Iniciando servidor...");
 
 app.use(express.json());
 
@@ -15,10 +16,13 @@ app.listen(PORT, () => {
   console.log(`✅ API mínima escuchando en ${PORT}`);
 });
 
-// Para ver errores que maten el proceso:
+// ----------- CAPTURAR ERRORES REALES ------------
 process.on('uncaughtException', (err) => {
-  console.error('💥 Uncaught Exception:', err);
+  console.error('💥 uncaughtException:', err);
 });
 process.on('unhandledRejection', (reason) => {
-  console.error('💥 Unhandled Rejection:', reason);
+  console.error('💥 unhandledRejection:', reason);
+});
+process.on('exit', (code) => {
+  console.log("⚡ process.exit ejecutado con código:", code);
 });
