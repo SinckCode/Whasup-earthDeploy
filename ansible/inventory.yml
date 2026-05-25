@@ -1,0 +1,29 @@
+all:
+  hosts:
+    production:
+      ansible_host: 192.168.100.120
+      ansible_user: ubuntu
+      ansible_password: "CHANGE_ME"
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+  vars:
+    # Application
+    app_repo: "https://github.com/SinckCode/whatsup-earth.git"
+    app_repo_backend: "https://github.com/SinckCode/Whasup-earthBack.git"
+    app_path: "/opt/whatsup-earth"
+
+    # Docker Hub
+    dockerhub_username: "onesto"
+    dockerhub_token: "CHANGE_ME_DOCKER_TOKEN"
+
+    # Cloudflare
+    cloudflare_zone_id: "CHANGE_ME_ZONE_ID"
+    cloudflare_api_token: "CHANGE_ME_API_TOKEN"
+
+    # Domains
+    api_domain: "api-whatsupearth.angelonesto.com"
+    app_domain: "whatsupearth.angelonesto.com"
+
+    # Database
+    postgres_password: "CHANGE_ME"
+    mongo_password: "CHANGE_ME"
